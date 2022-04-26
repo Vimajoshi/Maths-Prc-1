@@ -1,0 +1,1293 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     40262,       1285]
+NotebookOptionsPosition[     37864,       1198]
+NotebookOutlinePosition[     38212,       1213]
+CellTagsIndexPosition[     38169,       1210]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Name : Vimal Joshi
+Roll No. : 20201430
+Course: Bsc. (h) Computer Science\
+\>", "Chapter",
+ CellChangeTimes->{3.859866688140828*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the left and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the right and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", 
+     RowBox[{
+     "Input", "[", "\"\<Enter the number of sub intervals to be formed:\>\"", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"a", "+", 
+        RowBox[{"i", "*", "h"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ":=", 
+     RowBox[{"1", "/", "x"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumodd", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumeven", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumodd", "+=", 
+       RowBox[{
+        RowBox[{"4", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "2"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumeven", "+=", 
+       RowBox[{
+        RowBox[{"2", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Sn", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "3"}], ")"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "a"}]}], ")"}], "+", 
+        RowBox[{"N", "[", "sumodd", "]"}], "+", 
+        RowBox[{"N", "[", "sumeven", "]"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "b"}]}], ")"}]}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<For n=\>\"", ",", "n", ",", "\"\<,Simpson estimate is:\>\"", ",", 
+     "Sn"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"in", "=", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"1", "/", "x"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "1", ",", "2"}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<True value is\>\"", ",", "in"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<absolute error is \>\"", ",", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Sn", "-", "in"}], "]"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.8593320832990327`*^9, 3.859332086809039*^9}, {
+  3.8593321364795256`*^9, 3.859332175900794*^9}, {3.859332221718074*^9, 
+  3.8593322288940864`*^9}, {3.8593322700781584`*^9, 3.8593322834161816`*^9}, {
+  3.859421536966618*^9, 3.859421613328751*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"For n=\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",Simpson estimate is:\"\>", "\[InvisibleSpace]", 
+   "0.6931502306889303`"}],
+  SequenceForm["For n=", 10, ",Simpson estimate is:", 0.6931502306889303],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859421650472416*^9}],
+
+Cell[BoxData[
+ RowBox[{"Log", "[", "2", "]"}]], "Output",
+ CellChangeTimes->{3.859421650628416*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"True value is\"\>", "\[InvisibleSpace]", 
+   RowBox[{"Log", "[", "2", "]"}]}],
+  SequenceForm["True value is", 
+   Log[2]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859421650628416*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  InterpretationBox[
+   RowBox[{"\<\"absolute error is \"\>", "\[InvisibleSpace]", 
+    "3.050128985049305`*^-6"}],
+   SequenceForm["absolute error is ", 3.050128985049305*^-6],
+   Editable->False], "\[IndentingNewLine]"}]], "Print",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{
+  3.859421650628416*^9, {3.8594216850732765`*^9, 3.8594216954316945`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"Input", "[", "\"\<Enter the left and point:\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", "=", 
+   RowBox[{"Input", "[", "\"\<Enter the right and point:\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", "=", 
+   RowBox[{
+   "Input", "[", "\"\<Enter the number of sub intervals to be formed:\>\"", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"y", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"a", "+", 
+      RowBox[{"i", "*", "h"}]}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x", "]"}], ":=", 
+   RowBox[{"1", "/", "x"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sumodd", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sumeven", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "<", "n"}], ",", 
+    RowBox[{"i", "+=", "2"}], ",", 
+    RowBox[{"sumodd", "+=", 
+     RowBox[{
+      RowBox[{"4", "*", 
+       RowBox[{"f", "[", "x", "]"}]}], "/.", 
+      RowBox[{"x", "\[Rule]", 
+       RowBox[{"y", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "2"}], ",", 
+    RowBox[{"i", "<", "n"}], ",", 
+    RowBox[{"i", "+=", "2"}], ",", 
+    RowBox[{"sumeven", "+=", 
+     RowBox[{
+      RowBox[{"2", "*", 
+       RowBox[{"f", "[", "x", "]"}]}], "/.", 
+      RowBox[{"x", "\[Rule]", 
+       RowBox[{"y", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Sn", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"h", "/", "3"}], ")"}], "*", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"f", "[", "x", "]"}], "/.", 
+        RowBox[{"x", "\[Rule]", "a"}]}], ")"}], "+", 
+      RowBox[{"N", "[", "sumodd", "]"}], "+", 
+      RowBox[{"N", "[", "sumeven", "]"}], "+", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"f", "[", "x", "]"}], "/.", 
+        RowBox[{"x", "\[Rule]", "b"}]}], ")"}]}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{
+  "\"\<For n=\>\"", ",", "n", ",", "\"\<,Simpson estimate is:\>\"", ",", 
+   "Sn"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"in", "=", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{
+    RowBox[{"1", "/", "x"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "1", ",", "2"}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<True value is\>\"", ",", "in"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<absolute error is \>\"", ",", 
+   RowBox[{"Abs", "[", 
+    RowBox[{"Sn", "-", "in"}], "]"}]}], "]"}]}], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"For n=\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",Simpson estimate is:\"\>", "\[InvisibleSpace]", 
+   "0.6931502306889303`"}],
+  SequenceForm["For n=", 10, ",Simpson estimate is:", 0.6931502306889303],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859515738546889*^9}],
+
+Cell[BoxData[
+ RowBox[{"Log", "[", "2", "]"}]], "Output",
+ CellChangeTimes->{3.859515739794891*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"True value is\"\>", "\[InvisibleSpace]", 
+   RowBox[{"Log", "[", "2", "]"}]}],
+  SequenceForm["True value is", 
+   Log[2]],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859515739794891*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"absolute error is \"\>", "\[InvisibleSpace]", 
+   "3.050128985049305`*^-6"}],
+  SequenceForm["absolute error is ", 3.050128985049305*^-6],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859515739794891*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the left and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the right and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", 
+     RowBox[{
+     "Input", "[", "\"\<Enter the number of sub intervals to be formed:\>\"", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"a", "+", 
+        RowBox[{"i", "*", "h"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ":=", 
+     RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumodd", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumeven", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumodd", "+=", 
+       RowBox[{
+        RowBox[{"4", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "2"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumeven", "+=", 
+       RowBox[{
+        RowBox[{"2", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Sn1", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "3"}], ")"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "a"}]}], ")"}], "+", 
+        RowBox[{"N", "[", "sumodd", "]"}], "+", 
+        RowBox[{"N", "[", "sumeven", "]"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "b"}]}], ")"}]}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<For n=\>\"", ",", "n", ",", "\"\<,Simpson estimate is:\>\"", ",", 
+     "Sn1"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"in1", "=", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"Log", "[", "x", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "4", ",", "5.2"}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<True value is\>\"", ",", "in1"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<absolute error is \>\"", ",", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Sn1", "-", "in1"}], "]"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.859515778202158*^9, 3.8595158602427006`*^9}, 
+   3.8595159631560802`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"For n=\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",Simpson estimate is:\"\>", "\[InvisibleSpace]", 
+   "1.8278472579504854`"}],
+  SequenceForm["For n=", 6, ",Simpson estimate is:", 1.8278472579504854`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595158785415325`*^9, 3.8595159764785037`*^9}],
+
+Cell[BoxData["1.8278474085747363`"], "Output",
+ CellChangeTimes->{3.8595158788379335`*^9, 3.859515976603304*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"True value is\"\>", "\[InvisibleSpace]", 
+   "1.8278474085747363`"}],
+  SequenceForm["True value is", 1.8278474085747363`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595158785415325`*^9, 3.859515976618904*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"absolute error is \"\>", "\[InvisibleSpace]", 
+   "1.506242508497735`*^-7"}],
+  SequenceForm["absolute error is ", 1.506242508497735*^-7],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595158785415325`*^9, 3.859515976618904*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the left and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the right and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", 
+     RowBox[{
+     "Input", "[", "\"\<Enter the number of sub intervals to be formed:\>\"", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"a", "+", 
+        RowBox[{"i", "*", "h"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ":=", 
+     RowBox[{"Log", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumodd", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumeven", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumodd", "+=", 
+       RowBox[{
+        RowBox[{"4", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "2"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumeven", "+=", 
+       RowBox[{
+        RowBox[{"2", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Sn1", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "3"}], ")"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "a"}]}], ")"}], "+", 
+        RowBox[{"N", "[", "sumodd", "]"}], "+", 
+        RowBox[{"N", "[", "sumeven", "]"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "b"}]}], ")"}]}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<For n=\>\"", ",", "n", ",", "\"\<,Simpson estimate is:\>\"", ",", 
+     "Sn1"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"in1", "=", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"1", "/", "x"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "4", ",", "5.2"}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<True value is\>\"", ",", "in1"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<absolute error is \>\"", ",", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Sn1", "-", "in1"}], "]"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.8595158892743516`*^9, 3.8595159315660253`*^9}, {
+  3.8595159862129207`*^9, 3.859516019019778*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"For n=\"\>", "\[InvisibleSpace]", "12", 
+   "\[InvisibleSpace]", "\<\",Simpson estimate is:\"\>", "\[InvisibleSpace]", 
+   "1.8278473991272015`"}],
+  SequenceForm["For n=", 12, ",Simpson estimate is:", 1.8278473991272015`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859516036429408*^9}],
+
+Cell[BoxData["0.26236426446748107`"], "Output",
+ CellChangeTimes->{3.8595160365386086`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"True value is\"\>", "\[InvisibleSpace]", 
+   "0.26236426446748107`"}],
+  SequenceForm["True value is", 0.26236426446748107`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595160365386086`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"absolute error is \"\>", "\[InvisibleSpace]", 
+   "1.5654831346597204`"}],
+  SequenceForm["absolute error is ", 1.5654831346597204`],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595160365386086`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the left and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the right and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", 
+     RowBox[{
+     "Input", "[", "\"\<Enter the number of sub intervals to be formed:\>\"", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"a", "+", 
+        RowBox[{"i", "*", "h"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ":=", 
+     RowBox[{
+      RowBox[{"Sin", "[", "x", "]"}], "-", 
+      RowBox[{"Log", "[", "x", "]"}], "+", 
+      RowBox[{"Exp", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumodd", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumeven", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumodd", "+=", 
+       RowBox[{
+        RowBox[{"4", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "2"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumeven", "+=", 
+       RowBox[{
+        RowBox[{"2", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Sn1", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "3"}], ")"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "a"}]}], ")"}], "+", 
+        RowBox[{"N", "[", "sumodd", "]"}], "+", 
+        RowBox[{"N", "[", "sumeven", "]"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "b"}]}], ")"}]}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<For n=\>\"", ",", "n", ",", "\"\<,Simpson estimate is:\>\"", ",", 
+     "Sn1"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"in1", "=", 
+    RowBox[{"NIntegrate", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Sin", "[", "x", "]"}], "-", 
+       RowBox[{"Log", "[", "x", "]"}], "+", 
+       RowBox[{"Exp", "[", "x", "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0.2", ",", "1.4"}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<True value is\>\"", ",", "in1"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<absolute error is \>\"", ",", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Sn1", "-", "in1"}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.859516074212674*^9, 3.8595161473144016`*^9}, 
+   3.859516247872177*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"For n=\"\>", "\[InvisibleSpace]", "12", 
+   "\[InvisibleSpace]", "\<\",Simpson estimate is:\"\>", "\[InvisibleSpace]", 
+   "0.574056326487207`"}],
+  SequenceForm["For n=", 12, ",Simpson estimate is:", 0.574056326487207],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595161689984393`*^9, 3.859516260133798*^9}],
+
+Cell[BoxData["4.050947929882364`"], "Output",
+ CellChangeTimes->{3.85951616929484*^9, 3.8595162605705986`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"True value is\"\>", "\[InvisibleSpace]", "4.050947929882364`"}],
+  SequenceForm["True value is", 4.050947929882364],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595161689984393`*^9, 3.859516260586199*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"absolute error is \"\>", "\[InvisibleSpace]", 
+   "3.476891603395157`"}],
+  SequenceForm["absolute error is ", 3.476891603395157],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595161689984393`*^9, 3.859516260586199*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the left and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the right and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", 
+     RowBox[{
+     "Input", "[", "\"\<Enter the number of sub intervals to be formed:\>\"", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"a", "+", 
+        RowBox[{"i", "*", "h"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ":=", 
+     RowBox[{"Sin", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumodd", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumeven", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumodd", "+=", 
+       RowBox[{
+        RowBox[{"4", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "2"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumeven", "+=", 
+       RowBox[{
+        RowBox[{"2", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Sn1", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "3"}], ")"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "a"}]}], ")"}], "+", 
+        RowBox[{"N", "[", "sumodd", "]"}], "+", 
+        RowBox[{"N", "[", "sumeven", "]"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "b"}]}], ")"}]}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<For n=\>\"", ",", "n", ",", "\"\<,Simpson estimate is:\>\"", ",", 
+     "Sn1"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"in1", "=", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"Sin", "[", "x", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", 
+        RowBox[{"Pi", "/", "2"}]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<True value is\>\"", ",", "in1"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<absolute error is \>\"", ",", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Sn1", "-", "in1"}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.859516289071849*^9, 3.8595163386331353`*^9}, {
+  3.8595164780973783`*^9, 3.8595164868021936`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"For n=\"\>", "\[InvisibleSpace]", "12", 
+   "\[InvisibleSpace]", "\<\",Simpson estimate is:\"\>", "\[InvisibleSpace]", 
+   "0.999205303113718`"}],
+  SequenceForm["For n=", 12, ",Simpson estimate is:", 0.999205303113718],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859516356885167*^9}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.859516356900767*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"True value is\"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["True value is", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859516356900767*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"absolute error is \"\>", "\[InvisibleSpace]", 
+   "0.0007946968862819759`"}],
+  SequenceForm["absolute error is ", 0.0007946968862819759],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859516356900767*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the left and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the right and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", 
+     RowBox[{
+     "Input", "[", "\"\<Enter the number of sub intervals to be formed:\>\"", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"a", "+", 
+        RowBox[{"i", "*", "h"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ":=", 
+     RowBox[{"Sin", "[", "x", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumodd", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumeven", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumodd", "+=", 
+       RowBox[{
+        RowBox[{"4", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "2"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumeven", "+=", 
+       RowBox[{
+        RowBox[{"2", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Sn1", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "3"}], ")"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "a"}]}], ")"}], "+", 
+        RowBox[{"N", "[", "sumodd", "]"}], "+", 
+        RowBox[{"N", "[", "sumeven", "]"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "b"}]}], ")"}]}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<For n=\>\"", ",", "n", ",", "\"\<,Simpson estimate is:\>\"", ",", 
+     "Sn1"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"in1", "=", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"Sin", "[", "x", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", 
+        FractionBox["Pi", "2"]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<True value is\>\"", ",", "in1"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<absolute error is \>\"", ",", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Sn1", "-", "in1"}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.859516422608082*^9, 3.8595165000622163`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"For n=\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",Simpson estimate is:\"\>", "\[InvisibleSpace]", 
+   "0.9992299110148262`"}],
+  SequenceForm["For n=", 6, ",Simpson estimate is:", 0.9992299110148262],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595165308878703`*^9}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{3.8595165308878703`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"True value is\"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["True value is", 1],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595165308878703`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"absolute error is \"\>", "\[InvisibleSpace]", 
+   "0.0007700889851738335`"}],
+  SequenceForm["absolute error is ", 0.0007700889851738335],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.8595165308878703`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the left and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"Input", "[", "\"\<Enter the right and point:\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", "=", 
+     RowBox[{
+     "Input", "[", "\"\<Enter the number of sub intervals to be formed:\>\"", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"h", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"b", "-", "a"}], ")"}], "/", "n"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"y", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"a", "+", 
+        RowBox[{"i", "*", "h"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", "x", "]"}], ":=", 
+     RowBox[{
+      SqrtBox["x"], "*", 
+      RowBox[{"Exp", "[", "x", "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumodd", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sumeven", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumodd", "+=", 
+       RowBox[{
+        RowBox[{"4", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "2"}], ",", 
+      RowBox[{"i", "<", "n"}], ",", 
+      RowBox[{"i", "+=", "2"}], ",", 
+      RowBox[{"sumeven", "+=", 
+       RowBox[{
+        RowBox[{"2", "*", 
+         RowBox[{"f", "[", "x", "]"}]}], "/.", 
+        RowBox[{"x", "\[Rule]", 
+         RowBox[{"y", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Sn1", "=", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"h", "/", "3"}], ")"}], "*", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "a"}]}], ")"}], "+", 
+        RowBox[{"N", "[", "sumodd", "]"}], "+", 
+        RowBox[{"N", "[", "sumeven", "]"}], "+", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"f", "[", "x", "]"}], "/.", 
+          RowBox[{"x", "\[Rule]", "b"}]}], ")"}]}], ")"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{
+    "\"\<For n=\>\"", ",", "n", ",", "\"\<,Simpson estimate is:\>\"", ",", 
+     "Sn1"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{"in1", "=", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{
+       SqrtBox["x"], "*", 
+       RowBox[{"Exp", "[", "x", "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "1", ",", "2"}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<True value is\>\"", ",", "in1"}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Print", "[", 
+    RowBox[{"\"\<absolute error is \>\"", ",", 
+     RowBox[{"Abs", "[", 
+      RowBox[{"Sn1", "-", "in1"}], "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.859516559919521*^9, 3.8595166188408237`*^9}, {
+  3.859516651819281*^9, 3.859516687418543*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"For n=\"\>", "\[InvisibleSpace]", "12", 
+   "\[InvisibleSpace]", "\<\",Simpson estimate is:\"\>", "\[InvisibleSpace]", 
+   "5.85023345860593`"}],
+  SequenceForm["For n=", 12, ",Simpson estimate is:", 5.85023345860593],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859516714968191*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "2"}], " ", "\[ExponentialE]"}], "+", 
+    RowBox[{"2", " ", 
+     SqrtBox["2"], " ", 
+     SuperscriptBox["\[ExponentialE]", "2"]}], "+", 
+    RowBox[{
+     SqrtBox["\[Pi]"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Erfi", "[", "1", "]"}], "-", 
+       RowBox[{"Erfi", "[", 
+        SqrtBox["2"], "]"}]}], ")"}]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.859516715436192*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"True value is\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "2"}], " ", "\[ExponentialE]"}], "+", 
+      RowBox[{"2", " ", 
+       SqrtBox["2"], " ", 
+       SuperscriptBox["\[ExponentialE]", "2"]}], "+", 
+      RowBox[{
+       SqrtBox["\[Pi]"], " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Erfi", "[", "1", "]"}], "-", 
+         RowBox[{"Erfi", "[", 
+          SqrtBox["2"], "]"}]}], ")"}]}]}], ")"}]}]}],
+  SequenceForm[
+  "True value is", 
+   Rational[1, 2] ((-2) E + 2 2^Rational[1, 2] E^2 + 
+    Pi^Rational[1, 2] (Erfi[1] - Erfi[2^Rational[1, 2]]))],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859516715451792*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"absolute error is \"\>", "\[InvisibleSpace]", 
+   "2.955725421749378`*^-6"}],
+  SequenceForm["absolute error is ", 2.955725421749378*^-6],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.859516715467392*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1366, 686},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 141, 5, 174, "Chapter"],
+Cell[CellGroupData[{
+Cell[746, 31, 3621, 107, 335, "Input"],
+Cell[4370, 140, 343, 7, 22, "Print"],
+Cell[4716, 149, 99, 2, 30, "Output"],
+Cell[CellGroupData[{
+Cell[4840, 155, 244, 7, 22, "Print"],
+Cell[5087, 164, 402, 10, 43, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5538, 180, 3084, 99, 297, "Input"],
+Cell[8625, 281, 343, 7, 22, "Print"],
+Cell[8971, 290, 99, 2, 30, "Output"],
+Cell[CellGroupData[{
+Cell[9095, 296, 244, 7, 22, "Print"],
+Cell[9342, 305, 259, 6, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9650, 317, 3470, 105, 335, "Input"],
+Cell[13123, 424, 368, 7, 22, "Print"],
+Cell[13494, 433, 112, 1, 30, "Output"],
+Cell[CellGroupData[{
+Cell[13631, 438, 268, 6, 22, "Print"],
+Cell[13902, 446, 283, 6, 24, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14234, 458, 3488, 105, 335, "Input"],
+Cell[17725, 565, 344, 7, 22, "Print"],
+Cell[18072, 574, 91, 1, 30, "Output"],
+Cell[CellGroupData[{
+Cell[18188, 579, 248, 6, 22, "Print"],
+Cell[18439, 587, 256, 6, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18744, 599, 3657, 110, 316, "Input"],
+Cell[22404, 711, 365, 7, 22, "Print"],
+Cell[22772, 720, 110, 1, 30, "Output"],
+Cell[CellGroupData[{
+Cell[22907, 725, 261, 5, 22, "Print"],
+Cell[23171, 732, 275, 6, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23495, 744, 3492, 104, 316, "Input"],
+Cell[26990, 850, 341, 7, 22, "Print"],
+Cell[27334, 859, 70, 1, 30, "Output"],
+Cell[CellGroupData[{
+Cell[27429, 864, 204, 5, 22, "Print"],
+Cell[27636, 871, 259, 6, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27944, 883, 3437, 103, 337, "Input"],
+Cell[31384, 988, 343, 7, 22, "Print"],
+Cell[31730, 997, 72, 1, 30, "Output"],
+Cell[CellGroupData[{
+Cell[31827, 1002, 206, 5, 22, "Print"],
+Cell[32036, 1009, 261, 6, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32346, 1021, 3550, 108, 327, "Input"],
+Cell[35899, 1131, 339, 7, 22, "Print"],
+Cell[36241, 1140, 508, 17, 43, "Output"],
+Cell[CellGroupData[{
+Cell[36774, 1161, 788, 24, 36, "Print"],
+Cell[37565, 1187, 259, 6, 24, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
